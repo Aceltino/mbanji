@@ -1,0 +1,96 @@
+/**  ---------- x Home x ----------   */
+#header-logo-section{
+    background-color: var(--darkest-brown);
+}
+
+nav{
+    background-color: var(--cream-color);
+}
+
+.carousel-indicators [data-bs-target]{
+    background-color: var(--darkest-brown);
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+}
+
+.carousel-indicators [data-bs-target].active{
+    background-color: var(--lighter-orange);
+}
+
+.special-positioning{
+    position: absolute !important;
+    bottom: 120px;
+    left: 400px;
+}
+/**  ---------- x End of Home x ----------   */
+
+/**  ---------- x About x ----------   */
+#bg-image-section-about{
+    background-image: url('../img/buildings.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    height: 500px;
+}
+/**  ---------- x End of About x ----------   */
+
+/**  ---------- x Buy-rent x ----------   */
+
+/**  ---------- x End of Buy-rent x ----------   */
+
+/**  Client-Owner-main start   */
+#ico-bell-div{
+    width: 2.813rem;
+    height: 2.188rem;
+}
+/**  End of Client-Owner-main   */
+
+/*  *LG    */
+@media screen and (max-width: 992px) {
+    /**  ---------- x Main x ----------   */
+    .carousel-indicators [data-bs-target]{
+        background-color: var(--darkest-brown);
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .special-positioning{
+        position: absolute !important;
+        bottom: 40px;
+        left: 400px;
+    }
+
+    .fs-special{
+        font-size: 1.5rem !important;
+    }
+    /**  ---------- x End of Main x ----------   */
+
+    /**  Client-Owner-main start   */
+    #ico-bell-div{
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+    /**  End of Client-Owner-main   */
+}
+
+/*  *MD    */
+@media screen and (max-width: 768px) {
+    /**  ---------- x Main x ----------   */
+
+    /**  ---------- x End of Main x ----------   */
+
+    /**  Client-Owner-main start   */
+    #ico-bell-div{
+        width: 2.25rem;
+        height: 2.063rem;
+    }
+    /**  End of Client-Owner-main   */
+}
+
+/*  *SM    */
+@media screen and (max-width: 576px) {
+    /**  ---------- x Main x ----------   */
+
+    /**  ---------- x End of Main x ----------   */
+}
