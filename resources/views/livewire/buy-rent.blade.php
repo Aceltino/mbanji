@@ -163,8 +163,8 @@
                     @endif
 
                     @if (!empty($propriedades['properties']) && $page < $propriedades['pagination']['last_page'] && $in == 0)
-                        <div wire:loading.remove wire:target="loadMore" class="text-center">
-                            <button class="btn btn-primary" wire:click="loadMore">Carregar Mais</button>
+                        <div wire:loading.remove wire:target="loadMore" class="d-flex justify-content-center pt-4 text-center">
+                            <button class="bg-darkest-orange form-control text-center text-white w-50" wire:click="loadMore">Carregar Mais</button>
                         </div>
                         <div wire:loading wire:target="loadMore" class="text-center">
                             <div class="d-flex justify-content-center">
@@ -484,22 +484,80 @@
 <!-- Modal-2 -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="d-flex modal-header justify-content-center">
-                <i class="bi bi-exclamation-octagon fs-1"></i>
+                <h2 class="darkest-brown">Solicitação</h2>
             </div>
             <div class="modal-body">
-                <h3 class="text-center">Pretende “COMPRAR” está casa?</h3>
+                <section>
+                    <div class="row mb-3">
+                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                            <img class="w-100 p-3"  src="../img/sample-house.png" alt="">
+                        </div>
+                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                            <div class="w-100 p-lg-3 ps-lg-0 px-sm-3">
+                                <span class="fs-3">
+                                    Luanda, Viana, Luanda-Sul, Rua da Samba, Palácio do Ministério                                     
+                                </span>
+                                <button class="a-main-like-btn-bg btn my-3 text-white w-100" type="button">
+                                    Ver mais
+                                </button>
+                                <span class="color-form-orange fs-3">
+                                    120.000.000.000 Kzs
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-5">
+                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                            <div class="p-3">
+                                <strong class="d-block mb-5">
+                                    Por quanto tempo pretende alugar a casa?
+                                </strong>
+                                <strong class="d-block mb-4">
+                                    Quando pretende entrar?
+                                </strong>
+                                <strong class="d-block">
+                                    Sairá da casa na data de:
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="bl-2 border-color-form-orange col-lg-6 col-sm-10 offset-sm-1 offset-lg-0 ps-2">
+                            <div class="p-lg-3 ps-lg-0 ps-sm-3">
+                                <section>
+                                    <select class="form-select mb-3" name="quantity" id="quantity">
+                                        @for ($i = 1; $i <= 30; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                    <select class="form-select mb-3" name="unityOfMeasurement" id="unityOfMeasurement" disabled readonly>
+                                        <option value="months">Meses</option>
+                                    </select>
+                                </section>
+                                <section>
+                                    <input class="form-control mb-3" type="datetime-local" name="dateAndTime" id="dateAndTime">
+                                    <strong class="d-block text-center">2024-10-12</strong>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <strong class="fs-4 mb-3 text-center">
+                            Obs: Caso a casa estiver disponível, você deverá pagar o montante abaixo ao proprietário da casa:
+                        </strong>
+                        <strong class="color-form-orange fs-3 text-center">120.000.000.000 Kzs</strong>
+                    </div>
+                </section>
             </div>
             <div class="d-flex modal-footer justify-content-center">
                 <section class="d-flex gap-3">
                     <button type="button" class="btn btn-warning px-3 text-white" data-bs-dismiss="modal">
-                        Ajustar solicitação
+                        Cancelar solicitação
                     </button>
                     <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
                         data-bs-target="#confirmationModal">
-                        Solicitar casa
+                        Confirmar solicitação
                     </button>
                 </section>
             </div>

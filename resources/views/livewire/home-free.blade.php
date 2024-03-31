@@ -20,7 +20,7 @@
 
     <main class="w-100">
         <!--    *Carousel-1 start   -->
-        <div id="carouselExampleIndicators" class="carousel slide vw-100">
+        <div id="carouselExampleIndicators" class="carousel slide vw-100" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -92,7 +92,7 @@
         <!--    *End of section between the carousels    -->
 
         <!--    *Carousel-2 start   -->
-        <div id="carouselExampleIndicators-1" class="carousel d-none d-md-block slide vw-100">
+        <div id="carouselExampleIndicators-1" class="carousel d-none d-md-block slide vw-100" data-bs-ride="carousel">
             <div class="carousel-indicators special-positioning
             position-absolute">
                 <button type="button" data-bs-target="#carouselExampleIndicators-1" data-bs-slide-to="0" class="active"

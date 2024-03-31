@@ -25,7 +25,9 @@
         <div class="row">
             <div class="col-10 col-lg-7 d-flex justify-content-center offset-1 offset-lg-0">
                 <div class="card" style="width: 20rem;">
-                    <img class="card-img-top" src={{ Session::get('img') ?? "../img/photo-round-mini.png" }}  alt="...">
+                    <div class="d-flex justify-content-center py-4 w-100">
+                        <img class="card-img-top mt-3 w-25" src={{ Session::get('img') ?? "../img/photo-round-mini.png" }}  alt="...">
+                    </div>
                     <div class="card-body container-fluid">
                         <div class="row">
                             <div class="col-4 col-lg-5">
@@ -38,7 +40,7 @@
                                 <p class="card-text fw-bolder">(+244) 944 880 743</p>
                             </div>
                         </div>
-                        <p class="card-text fw-bolder text-center">{{ Session::get('nome') }}</p>
+                        <p class="card-text fw-bolder mb-4 mt-3 text-center">{{ Session::get('nome') }}</p>
                         <div class="d-flex justify-content-center">
                             <a href="#" class="btn main-btn-bg px-4 text-white">Atualizar perfil</a>
                         </div>
@@ -116,12 +118,12 @@
     <!--    *End of Main section    -->
 
     <!--    *Carousel-2 start   -->
-    <div id="carouselExampleIndicators-1" class="carousel d-none d-md-block slide vw-100">
+    <div id="carouselExampleIndicators-3" class="carousel d-none d-md-block slide vw-100" data-bs-ride="carousel">
         <div class="carousel-indicators special-positioning
         position-absolute">
-            <button type="button" data-bs-target="#carouselExampleIndicators-1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators-1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators-1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators-3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators-3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators-3" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -132,7 +134,7 @@
                             <img src="../img/img-2.png" alt="Young people living together" class="w-75">
                         </div>
                         <div class="w-50">
-                            <h2 class="darkest-brown fs-1 fs-special fw-bolder w-75">Precisa de casa para um convívio entre kambas?</h2>
+                            <h2 class="darkest-brown fs-3 fs-special fw-bolder w-75">Precisa de casa para um convívio entre kambas?</h2>
                         </div>
                     </div>
                 </div>
@@ -145,7 +147,7 @@
                             <img src="../img/img-2.png" alt="Young people living together" class="w-75">
                         </div>
                         <div class="w-50">
-                            <h2 class="darkest-brown fs-1 fs-special fw-bolder w-75">Encontre aqui a solução para os seus problemas...</h2>
+                            <h2 class="darkest-brown fs-3 fs-special fw-bolder w-75">Encontre aqui a solução para os seus problemas...</h2>
                         </div>
                     </div>
                 </div>
@@ -158,7 +160,7 @@
                             <img src="../img/img-2.png" alt="Young people living together" class="w-75">
                         </div>
                         <div class="w-50">
-                            <h2 class="darkest-brown fs-1 fs-special fw-bolder w-75">Sinta-se em casa!</h2>
+                            <h2 class="darkest-brown fs-3 fs-special fw-bolder w-75">Sinta-se em casa!</h2>
                         </div>
                     </div>
                 </div>
