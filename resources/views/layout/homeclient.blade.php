@@ -26,9 +26,9 @@
             <img alt="logo" class="w-25" src="../img/footer-logo.png">
         </div>
         <div class="d-flex align-items-center"> <!-- Div envolvendo os itens -->
-            <section class="bg-white d-flex align-items-center justify-content-evenly px-2 py-1 rounded-5 me-3"> <!-- Item 1 -->
+            <section class="bg-white d-flex align-items-center justify-content-evenly px-3 py-1 rounded-5 me-3"> <!-- Item 1 -->
                 <img alt="user" class="w-25" src="{{ Session::get('img') ?? "../img/photo-round-mini.png" }}"> <!-- Ajuste da largura da imagem -->
-                <p class="m-0 me-4" style="white-space: nowrap;">{{ Session::get('nome') }}</p> <!-- Adicionando margem à direita -->
+                <p class="m-0" style="white-space: nowrap;">{{ Session::get('nome') }}</p> <!-- Adicionando margem à direita -->
             </section>
             <a class="dropdown-item me-2" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal"> <!-- Adicionando margem à direita -->
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -98,22 +98,22 @@
 <footer class="main-footer">
     <div class="container-fluid py-2 w-100" id="img-main-footer">
         <div class="d-flex align-items-center mt-5 row" id="div-1-footer">
-            <div class="align-items-center col-md-6 d-flex flex-column mt-5" id="div-1-1-footer">
+            <div class="align-items-center col-md-6 d-flex flex-column" id="div-1-1-footer">
                 <img class="w-50" src="../img/footer-logo.png" alt="logo">
                 <p class="fs-4 text-white w-50">Encontre seu lar, seu espaço, seu lugar!</p>
             </div>
-            <div class="col-md-6 d-flex justify-content-center mt-5" id="div-1-2-footer">
+            <div class="col-md-6 d-flex justify-content-center" id="div-1-2-footer">
                 <div class="w-75">
                     <h2 class="darkest-brown fs-1">Links utéis</h2>
                     <ul class="mb-0 list-unstyled">
                         <li>
-                            <a class="darkest-brown nav-link" href="#">Solicitar propriedade</a>
+                            <a class="darkest-brown nav-link d-inline" href="#">Solicitar propriedade</a>
                         </li>
                         <li>
-                            <a class="darkest-brown nav-link" href="{{route('home')}}">Registrar sua propriedade no portal</a>
+                            <a class="darkest-brown nav-link d-inline" href="{{route('home')}}">Registrar sua propriedade no portal</a>
                         </li>
                         <li>
-                            <a class="darkest-brown fw-bold  nav-link" href="#">Termos e Politicas de Privacidade</a>
+                            <a class="darkest-brown fw-bold nav-link d-inline" href="#">Termos e Politicas de Privacidade</a>
                         </li>
                     </ul>
                 </div>

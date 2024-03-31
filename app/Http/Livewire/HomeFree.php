@@ -27,9 +27,9 @@ class HomeFree extends Component
             }
         }
 
-        $response = Http::withToken(Session::get('token'))->get('http://u_mbanji.test/api/show-firstten');
+        $response = Http::get('http://u_mbanji.test/api/show-firstten');
         $this->propriedades = $response->json();
-        // dd($this->propriedades);
+        dd($this->propriedades);
     }
     public function render()
     {

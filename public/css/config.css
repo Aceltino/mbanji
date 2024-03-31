@@ -45,9 +45,16 @@ body{
     background-color: var(--darkest-orange);
 }
 
+.color-form-orange{
+    color: var(--form-orange);
+}
 
 .bg-form-orange{
     background-color: var(--form-orange);
+}
+
+.border-color-form-orange{
+    border-color: var(--form-orange) !important;    
 }
 
 .bg-lighter-orange{
