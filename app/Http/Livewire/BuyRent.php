@@ -17,6 +17,7 @@ class BuyRent extends Component
 
     public $page = 1;
     public $pageFiltro = 1;
+    protected $listeners = ['mount'];
 
 
     public $contrato = null;
@@ -47,23 +48,17 @@ class BuyRent extends Component
     {
 
         if (($this->contrato == "" || $this->contrato == null) && ($this->tipo == "" || $this->tipo == null) && ($this->provincia == "" || $this->provincia == null) && ($this->municipio == "" || $this->municipio == null) && ($this->preco == "" || $this->preco == null) && ($this->quarto == "" || $this->quarto == null) && ($this->tempo == "" || $this->tempo == null)) {
-            $this->propriedades = [];
-            $this->redirect(route('buyrent'));
-        }
-        $arrayKey = [];
-
-        $chave = [$this->contrato,$this->tipo,$this->provincia,$this->municipio,$this->preco,$this->quarto,$this->tempo];
-        if(in_array($arrayKey, $chave))
-        {
-            $this->page++;
-        }
-        else
-        {
             $this->page = 1;
+            $this->pageFiltro = 1;
             $this->propriedades = [];
+            // $this->mount();
+            // $this->redirect(route('buyrent'));
         }
 
-        $this->in = 1;
+            $this->page = 1;
+            $this->pageFiltro = 1;
+            $this->propriedades = [];
+
         $response = Http::post('http://u_mbanji.test/api/show-all-property-filter', [
             'page' => $this->page,
             'contract' => $this->contrato,
@@ -74,26 +69,25 @@ class BuyRent extends Component
             'property_bedRoom' => $this->quarto,
             'unity_time' => $this->tempo,
         ]);
+        $this->propriedades = $response->json();
 
-        $properties = $response->json();
-
-        if ($response->status() == 200) {
-
-            if (!empty($properties['properties'])) {
-                $this->propriedades['properties'] = array_merge($this->propriedades['properties'], $properties['properties']);
-            }
-            else
-            {
-                $this->propriedades = array_merge($this->propriedades, $properties);
-            }
-        }
-        // dd($response->json(), $this->provincia);
         if ($response->status() == 409) {
-            session()->flash('error', 'Sem resultado para esta filtragem!');
             $this->propriedades = [];
-            $this->propriedades = 0;
-            return $this->mount();
+
+            $this->contrato = "";
+            $this->tipo = "";
+            $this->provincia = "";
+            $this->municipio = "";
+            $this->preco = "";
+            $this->quarto = "";
+            $this->tempo = "";
+
+            $this->dispatchBrowserEvent('error');
+            // $this->mount();
+
+            // $this->emit('error');
         }
+
     }
 
     public function mount()
@@ -105,7 +99,6 @@ class BuyRent extends Component
                 return redirect()->route('client');
             }
         }
-        $this->in = 0;
 
         $response = Http::withToken(Session::get('token'))->post('http://u_mbanji.test/api/show-all-property');
         $this->propriedades = $response->json();

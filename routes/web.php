@@ -12,6 +12,7 @@ use App\Http\Livewire\PasswordRecovery;
 use App\Http\Livewire\PasswordReset;
 use App\Http\Livewire\Register;
 use App\Http\Livewire\SeeMore;
+use App\Http\Livewire\SeeProperties;
 use App\Http\Livewire\TermosCondições;
 
 /*

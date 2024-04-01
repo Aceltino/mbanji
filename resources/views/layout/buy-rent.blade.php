@@ -11,9 +11,11 @@
     <!-- /	Link dos Css do Bootstrap -->
     <link href={{URL::asset("bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
 
+
     <!-- /	Link do Css do projecto -->
     <link href={{{URL::asset("css/config.css")}}} rel="stylesheet">
     <link href={{{URL::asset("css/main.css")}}} rel="stylesheet">
+    <link href={{{URL::asset("font-awesome/css/font-awesome.min.css")}}} rel="stylesheet">
 
     @livewireStyles
 </head>
