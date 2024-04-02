@@ -80,7 +80,7 @@
             </ul>
             <div class="align-items-center d-flex gap-2">
 
-                <a class="a-main-bg py-1 px-3 rounded-2 text-center text-white w-100" href="#">Registrar Casa</a>
+                <a class="a-main-bg py-1 px-3 rounded-2 text-center text-white w-100" href="#" data-bs-toggle="modal" data-bs-target="#homeRegistrationModal">Registrar Casa</a>
                 <div class="bg-darkest-orange d-flex justify-content-center align-items-center  rounded-5" id="ico-bell-div">
                     <i class="bi bi-bell-fill text-white"></i>
                 </div>

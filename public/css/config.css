@@ -141,6 +141,17 @@ body{
     background-color: var(--lighter-orange);
     text-decoration: none;
 }
+
+/*Different button */
+.different-btn{
+    border: 1px solid var(--darkest-brown);
+    color: var(--darkest-brown);
+}
+
+.different-btn:hover{
+    background-color: var(--darkest-brown);
+    color: white;
+}
 /*  Form button  */
 .btn-form, .btn-form:hover {
     background-color: var(--darkest-orange);
@@ -174,7 +185,7 @@ body{
 }
 
 .special-card{
-    width: calc(100%/5) !important;
+    width: calc(100%/4) !important;
 }
 
 .carousel-control-prev {
@@ -247,7 +258,7 @@ a.darkest-brown:active, a.darkest-brown:hover{
 @media screen and (max-width: 992px) {
     /**  ---------- x Main x ----------   */
     .special-card{
-        width: 30% !important;
+        width: 45% !important;
     }
 
     .carousel-control-prev {
@@ -268,7 +279,7 @@ a.darkest-brown:active, a.darkest-brown:hover{
     }
 
     .special-card{
-        width: 40% !important;
+        width: 60% !important;
     }
 
     .carousel-control-prev {

@@ -2,7 +2,7 @@
     @section('title', 'Sobre')
 <main>
     <!--    *Main img start   -->
-    <section class="bg-about-main-img mb-4">
+    <section class="bg-about-main-img mb-5">
         <div class="d-flex justify-content-center align-items-center vw-100" id="bg-image-section-about">
             <h1 class="py-5 text-capitalize text-center text-white">Sobre o portal<br> <b>U-Mbanji</b></h1>
         </div>
