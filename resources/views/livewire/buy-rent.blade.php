@@ -193,214 +193,169 @@
         </section>
 
 
-        <!--    Modal-1 start    -->
-        <div wire:ignore.self class="modal fade" id="seeMoreModal" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mais informações</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+    <!--    Modal-1 start    -->
+    <div wire:ignore.self class="modal fade" id="seeMoreModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mais informações</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div wire:loading wire:target="pegarPropriedade">
+                        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading...">
                     </div>
-                    <div class="modal-body">
 
-                        <div wire:loading wire:target="pegarPropriedade">
-                            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading...">
-                        </div>
+                    <div wire:loading.remove>
 
-                        <div wire:loading.remove>
-
-                            <section class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <!-- Carousel principal -->
-                                        <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <!-- Imagens principais -->
-                                                <div class="carousel-item active">
-                                                    <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}"
-                                                        class="d-block w-100" alt="Imagem principal">
-                                                </div>
-                                                <!-- Imagens adicionais -->
-                                                @if (isset($propriedadeOne['images']) && $propriedadeOne['images'] !== [])
-                                                    @foreach ($propriedadeOne['images'] as $index => $image)
-                                                        <div class="carousel-item">
-                                                            <img src="{{ $image['img'] }}" class="d-block w-100"
-                                                                alt="Imagem adicional {{ $image['imgId'] }}">
-                                                        </div>
-                                                    @endforeach
-                                                @endif
-                                            </div>
-                                            <!-- Botões de navegação -->
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselPrincipal" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselPrincipal" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Restante do conteúdo da modal -->
-                                <!-- ... -->
-                            </section>
-
-
-                            <section class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6 fs-2">
-                                        <i class="bi bi-house-fill"></i>
-                                        <span>
-                                            @if (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 1)
-                                                Apartamento
-                                            @else
-                                                Vivenda
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <div class="col-12 col-lg-6 fs-2 text-start text-lg-end">
-                                        <i class="bi bi-house-fill"></i>
-                                        <span>
-                                            @if (isset($propriedadeOne['property_location']))
-                                                {{ $propriedadeOne['province'] }}, {{ $propriedadeOne['municipe'] }},
-                                                {{ $propriedadeOne['property_location'] }}
-                                            @endif
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="py-3 row">
-                                    <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
-                                        <div class="d-flex gap-3">
-                                            <h5>SELECIONE A OPÇÃO PARA VER O PREÇO, CONSIDERE QUE O PREÇO PODE MUDAR SE
-                                                AUMENTAR
-                                                O TEMPO DE ESTADIA</h5>
-
-                                            <select class="form-control" name="precoPropriedade"
-                                                id="precoPropriedade" wire:model="precoPropriedade">
-                                                <option value="">CONTRATO</option>
-                                                @if (isset($propriedadeOne['prices']))
-                                                    @foreach ($propriedadeOne['prices'] as $price)
-                                                        <option value={{ $price['price'] }}>
-                                                            @if ($price['contract'] == 0)
-                                                                {{ $price['time'] ?? 'N/D' }}
-                                                                @endif @if ($price['contract'] == 0)
-                                                                    @if ($price['unity_time'] == 5)
-                                                                        Hora(s) -
-                                                                    @elseif($price['unity_time'] == 1)
-                                                                        Dias(s) -
-                                                                    @elseif($price['unity_time'] == 2)
-                                                                        Semana(s) -
-                                                                    @elseif($price['unity_time'] == 3)
-                                                                        Mes(es) -
-                                                                    @elseif($price['unity_time'] == 4)
-                                                                        Ano(s) -
-                                                                    @endif
-                                                                    @endif @if ($price['contract'] == 0)
-                                                                        Alugar
-                                                                    @else
-                                                                        Comprar
-                                                                    @endif
-                                                        </option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                    <div class="color-darkest-orange fs-2 mt-4 text-center">
-                                        <p>{{ $precoPropriedade ?? 'Preço ainda não carregado!' }}</p>
-                                    </div>
-
-                                </div>
-                            </section>
-                            <section class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h2 class="text-uppercase">Detalhes da casa</h2>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h3 class="darkest-brown">Descrição da casa</h3>
-                                    </div>
-                                </div>
-
-                                @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                                    @php $hasDescription1 = false; @endphp
-                                    @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                        <div class="row">
-                                            @foreach ($chunk as $index => $descricao)
-                                                @if ($index % 4 == 0)
-                                        </div>
-                                        <div class="row">
-                                    @endif
-                                    @if ($descricao['descType'] == 1)
-                                        @php $hasDescription1 = true; @endphp
-                                        <div class="col-3">
-                                            <ul class="list-group text-center w-100">
-                                                <li class="list-group-item">{{ $descricao['desc'] }}</li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                @endforeach
-                        </div>
-                        @endforeach
-                        @if (!$hasDescription1)
+                        <section class="container-fluid">
                             <div class="row">
                                 <div class="col-12">
-                                    <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">Sem descrições descritas</li>
-                                    </ul>
+                                    <!-- Carousel principal -->
+                                    <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <!-- Imagens principais -->
+                                            <div class="carousel-item active">
+                                                <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}"
+                                                    class="d-block w-100" alt="Imagem principal">
+                                            </div>
+                                            <!-- Imagens adicionais -->
+                                            @if (isset($propriedadeOne['images']) && $propriedadeOne['images'] !== [])
+                                                @foreach ($propriedadeOne['images'] as $index => $image)
+                                                    <div class="carousel-item">
+                                                        <img src="{{ $image['img'] }}" class="d-block w-100"
+                                                            alt="Imagem adicional {{ $image['imgId'] }}">
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <!-- Botões de navegação -->
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselPrincipal" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carouselPrincipal" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        @endif
-                    @else
+                            <!-- Restante do conteúdo da modal -->
+                            <!-- ... -->
+                        </section>
+
+
+                        <section class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 fs-2">
+                                    <i class="bi bi-house-fill"></i>
+                                    <span>
+                                        @if (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 1)
+                                            Apartamento
+                                        @else
+                                            Vivenda
+                                        @endif
+                                    </span>
+                                </div>
+                                <div class="col-12 col-lg-6 fs-2 text-start text-lg-end">
+                                    <i class="bi bi-house-fill"></i>
+                                    <span>
+                                        @if (isset($propriedadeOne['property_location']))
+                                            {{ $propriedadeOne['province'] }}, {{ $propriedadeOne['municipe'] }},
+                                            {{ $propriedadeOne['property_location'] }}
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="py-3 row">
+                                <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
+                                    <div class="d-flex gap-3">
+                                        <h5>SELECIONE A OPÇÃO PARA VER O PREÇO, CONSIDERE QUE O PREÇO PODE MUDAR SE
+                                            AUMENTAR
+                                            O TEMPO DE ESTADIA</h5>
+
+                                        <select class="form-control" name="precoPropriedade"
+                                            id="precoPropriedade" wire:model="precoPropriedade">
+                                            <option value="">CONTRATO</option>
+                                            @if (isset($propriedadeOne['prices']))
+                                                @foreach ($propriedadeOne['prices'] as $price)
+                                                    <option value={{ $price['price'] }}>
+                                                        @if ($price['contract'] == 0)
+                                                            {{ $price['time'] ?? 'N/D' }}
+                                                            @endif @if ($price['contract'] == 0)
+                                                                @if ($price['unity_time'] == 5)
+                                                                    Hora(s) -
+                                                                @elseif($price['unity_time'] == 1)
+                                                                    Dias(s) -
+                                                                @elseif($price['unity_time'] == 2)
+                                                                    Semana(s) -
+                                                                @elseif($price['unity_time'] == 3)
+                                                                    Mes(es) -
+                                                                @elseif($price['unity_time'] == 4)
+                                                                    Ano(s) -
+                                                                @endif
+                                                                @endif @if ($price['contract'] == 0)
+                                                                    Alugar
+                                                                @else
+                                                                    Comprar
+                                                                @endif
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="color-darkest-orange fs-2 mt-4 text-center">
+                                    <p>{{ $precoPropriedade ?? 'Preço ainda não carregado!' }}</p>
+                                </div>
+
+                            </div>
+                        </section>
+                        <section class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="text-uppercase">Detalhes da casa</h2>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="darkest-brown">Descrição da casa</h3>
+                                </div>
+                            </div>
+
+                            @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
+                                @php $hasDescription1 = false; @endphp
+                                @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
+                                    <div class="row">
+                                        @foreach ($chunk as $index => $descricao)
+                                            @if ($index % 4 == 0)
+                                    </div>
+                                    <div class="row">
+                                @endif
+                                @if ($descricao['descType'] == 1)
+                                    @php $hasDescription1 = true; @endphp
+                                    <div class="col-3">
+                                        <ul class="list-group text-center w-100">
+                                            <li class="list-group-item">{{ $descricao['desc'] }}</li>
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endforeach
+                    </div>
+                    @endforeach
+                    @if (!$hasDescription1)
                         <div class="row">
                             <div class="col-12">
                                 <ul class="list-group text-center w-100">
                                     <li class="list-group-item">Sem descrições descritas</li>
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="darkest-brown">Debilidades da casa</h3>
-                            </div>
-                        </div>
-
-                        @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                            @php $hasDescription0 = false; @endphp
-                            @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                <div class="row">
-                                    @foreach ($chunk as $index => $descricao)
-                                        @if ($index % 4 == 0)
-                                </div>
-                                <div class="row">
-                            @endif
-                            @if ($descricao['descType'] == 0)
-                                @php $hasDescription0 = true; @endphp
-                                <div class="col-3">
-                                    <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">{{ $descricao['desc'] }}</li>
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    @endforeach
-                    @if (!$hasDescription0)
-                        <div class="row">
-                            <div class="col-12">
-                                <ul class="list-group text-center w-100">
-                                    <li class="list-group-item">Sem debilidades descritas</li>
                                 </ul>
                             </div>
                         </div>
@@ -409,7 +364,7 @@
                     <div class="row">
                         <div class="col-12">
                             <ul class="list-group text-center w-100">
-                                <li class="list-group-item">Sem debilidades descritas</li>
+                                <li class="list-group-item">Sem descrições descritas</li>
                             </ul>
                         </div>
                     </div>
@@ -417,153 +372,198 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <h3 class="darkest-brown">Um pouco mais sobre a casa...</h3>
+                            <h3 class="darkest-brown">Debilidades da casa</h3>
+                        </div>
+                    </div>
+
+                    @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
+                        @php $hasDescription0 = false; @endphp
+                        @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
+                            <div class="row">
+                                @foreach ($chunk as $index => $descricao)
+                                    @if ($index % 4 == 0)
+                            </div>
+                            <div class="row">
+                        @endif
+                        @if ($descricao['descType'] == 0)
+                            @php $hasDescription0 = true; @endphp
+                            <div class="col-3">
+                                <ul class="list-group text-center w-100">
+                                    <li class="list-group-item">{{ $descricao['desc'] }}</li>
+                                </ul>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                @endforeach
+                @if (!$hasDescription0)
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="list-group text-center w-100">
+                                <li class="list-group-item">Sem debilidades descritas</li>
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+            @else
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="list-group text-center w-100">
+                            <li class="list-group-item">Sem debilidades descritas</li>
+                        </ul>
+                    </div>
+                </div>
+                @endif
+
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="darkest-brown">Um pouco mais sobre a casa...</h3>
+                    </div>
+                </div>
+                <div class="py-3 row">
+                    <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
+                        <div>
+                            <p>
+                                @if (isset($propriedadeOne['property_description']) && $propriedadeOne['property_description'] == 0)
+                                    Sem descrição adicional!
+                                @else
+                                    {{ $propriedadeOne['property_description'] ?? 'Sem descrição adicional!' }}
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <section class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-5">
+                            <h2 class="text-center text-uppercase">O proprietário</h2>
                         </div>
                     </div>
                     <div class="py-3 row">
-                        <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
-                            <div>
-                                <p>
-                                    @if (isset($propriedadeOne['property_description']) && $propriedadeOne['property_description'] == 0)
-                                        Sem descrição adicional!
-                                    @else
-                                        {{ $propriedadeOne['property_description'] ?? 'Sem descrição adicional!' }}
-                                    @endif
-                                </p>
+                        <div class="col-12 col-lg-5">
+                            <div class="align-items-center d-flex h-100 justify-content-center">
+                                <img class="w-25" alt="photo"
+                                    src={{ $propriedadeOne['propr_img'] ?? '../img/photo-round.png' }}>
                             </div>
                         </div>
-                    </div>
-                    </section>
-                    <section class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 col-lg-5">
-                                <h2 class="text-center text-uppercase">O proprietário</h2>
-                            </div>
-                        </div>
-                        <div class="py-3 row">
-                            <div class="col-12 col-lg-5">
-                                <div class="align-items-center d-flex h-100 justify-content-center">
-                                    <img class="w-25" alt="photo"
-                                        src={{ $propriedadeOne['propr_img'] ?? '../img/photo-round.png' }}>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-7 mt-3 mt-lg-0">
-                                <div class="bl-2 ps-2">
-                                    <strong
-                                        class="text-uppercase">{{ $propriedadeOne['proprietary_name'] ?? 'Carregando' }}</strong>
-                                    <p>{{ $propriedadeOne['proprietary_bi'] ?? 'Carregando' }}</p>
+                        <div class="col-12 col-lg-7 mt-3 mt-lg-0">
+                            <div class="bl-2 ps-2">
+                                <strong
+                                    class="text-uppercase">{{ $propriedadeOne['proprietary_name'] ?? 'Carregando' }}</strong>
+                                <p>{{ $propriedadeOne['proprietary_bi'] ?? 'Carregando' }}</p>
 
-                                    @if (isset($propriedadeOne['proprietary_phones']))
-                                        @foreach ($propriedadeOne['proprietary_phones'] as $telefone)
-                                            {{ $telefone['number'] }}
-                                        @endforeach
-                                    @endif
-                                    <p>cesaltinoquianvo@gmail.com</p>
-                                    <p class="mb-0">Poderá ter mais informações do proprietário caso avançar com a
-                                        negociação</p>
-                                </div>
+                                @if (isset($propriedadeOne['proprietary_phones']))
+                                    @foreach ($propriedadeOne['proprietary_phones'] as $telefone)
+                                        {{ $telefone['number'] }}
+                                    @endforeach
+                                @endif
+                                <p>cesaltinoquianvo@gmail.com</p>
+                                <p class="mb-0">Poderá ter mais informações do proprietário caso avançar com a
+                                    negociação</p>
                             </div>
+                        </div>
 
-                        </div>
-                    </section>
-                </div>
-                <div class="d-flex modal-footer justify-content-center">
-                    <section class="d-flex gap-3">
-                        <button type="button" class="btn btn-warning px-5 text-white"
-                            data-bs-dismiss="modal">Voltar</button>
-                        <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
-                            data-bs-target="#confirmationModal">Solicitar casa</button>
-                    </section>
-                </div>
-            </div>
-        </div>
-</div>
-</div>
-<!--    End of modal-1    -->~
-
-<!-- Modal-2 -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="d-flex modal-header justify-content-center">
-                <h2 class="darkest-brown">Solicitação</h2>
-            </div>
-            <div class="modal-body">
-                <section>
-                    <div class="row mb-3">
-                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
-                            <img class="w-100 p-3"  src="../img/sample-house.png" alt="">
-                        </div>
-                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
-                            <div class="w-100 p-lg-3 ps-lg-0 px-sm-3">
-                                <span class="fs-3">
-                                    Luanda, Viana, Luanda-Sul, Rua da Samba, Palácio do Ministério                                     
-                                </span>
-                                <button class="a-main-like-btn-bg btn my-3 text-white w-100" type="button">
-                                    Ver mais
-                                </button>
-                                <span class="color-form-orange fs-3">
-                                    120.000.000.000 Kzs
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row my-5">
-                        <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
-                            <div class="p-3">
-                                <strong class="d-block mb-5">
-                                    Por quanto tempo pretende alugar a casa?
-                                </strong>
-                                <strong class="d-block mb-4">
-                                    Quando pretende entrar?
-                                </strong>
-                                <strong class="d-block">
-                                    Sairá da casa na data de:
-                                </strong>
-                            </div>
-                        </div>
-                        <div class="bl-2 border-color-form-orange col-lg-6 col-sm-10 offset-sm-1 offset-lg-0 ps-2">
-                            <div class="p-lg-3 ps-lg-0 ps-sm-3">
-                                <section>
-                                    <select class="form-select mb-3" name="quantity" id="quantity">
-                                        @for ($i = 1; $i <= 30; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                    <select class="form-select mb-3" name="unityOfMeasurement" id="unityOfMeasurement" disabled readonly>
-                                        <option value="months">Meses</option>
-                                    </select>
-                                </section>
-                                <section>
-                                    <input class="form-control mb-3" type="datetime-local" name="dateAndTime" id="dateAndTime">
-                                    <strong class="d-block text-center">2024-10-12</strong>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <strong class="fs-4 mb-3 text-center">
-                            Obs: Caso a casa estiver disponível, você deverá pagar o montante abaixo ao proprietário da casa:
-                        </strong>
-                        <strong class="color-form-orange fs-3 text-center">120.000.000.000 Kzs</strong>
                     </div>
                 </section>
             </div>
             <div class="d-flex modal-footer justify-content-center">
                 <section class="d-flex gap-3">
-                    <button type="button" class="btn btn-warning px-3 text-white" data-bs-dismiss="modal">
-                        Cancelar solicitação
-                    </button>
+                    <button type="button" class="btn btn-warning px-5 text-white"
+                        data-bs-dismiss="modal">Voltar</button>
                     <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
-                        data-bs-target="#confirmationModal">
-                        Confirmar solicitação
-                    </button>
+                        data-bs-target="#confirmationModal">Solicitar casa</button>
                 </section>
             </div>
         </div>
     </div>
-</div>
-<!--    End of modal-2   -->
+    </div>
+    </div>
+    <!--    End of modal-1    -->
+
+    <!-- Modal-2 -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="d-flex modal-header justify-content-center">
+                    <h2 class="darkest-brown">Solicitação</h2>
+                </div>
+                <div class="modal-body">
+                    <section>
+                        <div class="row mb-3">
+                            <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                                <img class="w-100 p-3"  src="../img/sample-house.png" alt="">
+                            </div>
+                            <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                                <div class="w-100 p-lg-3 ps-lg-0 px-sm-3">
+                                    <span class="fs-3">
+                                        Luanda, Viana, Luanda-Sul, Rua da Samba, Palácio do Ministério                                     
+                                    </span>
+                                    <button class="a-main-like-btn-bg btn my-3 text-white w-100" type="button">
+                                        Ver mais
+                                    </button>
+                                    <span class="color-form-orange fs-3">
+                                        120.000.000.000 Kzs
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-5">
+                            <div class="col-lg-6 col-sm-10 offset-sm-1 offset-lg-0">
+                                <div class="p-3">
+                                    <strong class="d-block mb-5">
+                                        Por quanto tempo pretende alugar a casa?
+                                    </strong>
+                                    <strong class="d-block mb-4">
+                                        Quando pretende entrar?
+                                    </strong>
+                                    <strong class="d-block">
+                                        Sairá da casa na data de:
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="bl-2 border-color-form-orange col-lg-6 col-sm-10 offset-sm-1 offset-lg-0 ps-2">
+                                <div class="p-lg-3 ps-lg-0 ps-sm-3">
+                                    <section>
+                                        <select class="form-select mb-3" name="quantity" id="quantity">
+                                            @for ($i = 1; $i <= 30; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
+                                        </select>
+                                        <select class="form-select mb-3" name="unityOfMeasurement" id="unityOfMeasurement" disabled readonly>
+                                            <option value="months">Meses</option>
+                                        </select>
+                                    </section>
+                                    <section>
+                                        <input class="form-control mb-3" type="datetime-local" name="dateAndTime" id="dateAndTime">
+                                        <strong class="d-block text-center">2024-10-12</strong>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <strong class="fs-4 mb-3 text-center">
+                                Obs: Caso a casa estiver disponível, você deverá pagar o montante abaixo ao proprietário da casa:
+                            </strong>
+                            <strong class="color-form-orange fs-3 text-center">120.000.000.000 Kzs</strong>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex modal-footer justify-content-center">
+                    <section class="d-flex gap-3">
+                        <button type="button" class="btn btn-warning px-3 text-white" data-bs-dismiss="modal">
+                            Cancelar solicitação
+                        </button>
+                        <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
+                            data-bs-target="#confirmationModal">
+                            Confirmar solicitação
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End of modal-2   -->
 </main>
 </div>

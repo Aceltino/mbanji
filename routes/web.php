@@ -38,7 +38,8 @@ Route::get('/ver-mais', SeeMore::class)->name('see.more');
 
 Route::get('/logout', [HomeClient::class, 'logout'])->name('logout');
 
-Route::get('/termo', TermosCondições::class)->name('aaa');;
+Route::get('/termo', TermosCondições::class)->name('aaa');
+Route::get('/see-properties', SeeProperties::class)->name('seeProperties');
 
 
 

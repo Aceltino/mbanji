@@ -14,7 +14,7 @@ class HomeClient extends Component
             Session::flush();
             return redirect()->route('login')->with('error', 'Faça o login!');
         }
-        return view('livewire.home-client')->layout('layout.homeclient');;
+        return view('livewire.home-client')->layout('layout.homeclient');
     }
 
     public function logout()

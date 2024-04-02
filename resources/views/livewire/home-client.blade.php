@@ -4,10 +4,10 @@
 <!--    *Main start    -->
 <main class="w-100">
     <!--    *Search section start    -->
-    {{-- <section class="container vw-100 pt-3">
+    <section class="container vw-100 pt-3">
         <div class="row">
             <div class="col-10 col-lg-4 offset-1 offset-lg-4">
-                <div class="input-group">
+                <div class="input-group my-4">
                     <input class="form-control" type="search" name="" id="" placeholder="Procurar alguém">
                     <div class="input-group-append">
                         <span class="input-group-text" id="search-icon">
@@ -17,8 +17,121 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+
+        <!--    *Owner Section start    -->
+        <section id="recently-posted-section" class="my-3 py-3">
+            <div id="cards-section">
+                <!--    *Carousel-3 start   -->
+                <div id="carouselExampleHouses" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Adicione o atributo data-bs-ride="carousel" -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="cards-wrapper">
+                                <!--    *Card-1 start    -->
+                                @for($i = 1; $i <= 4; $i++)
+                                    @if($i  == 1)
+                                        <div class="card special-card" style="width: 14rem;">
+                                            <img src="../img/photo-round.png" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <div>
+                                                    <h6 class="card-title color-darkest-orange text-uppercase">
+                                                        Aceltino Kiaku Mateus Quianvo
+                                                    </h6>
+                                                    <p class="color-darkest-orange">
+                                                        cesaltinoquianvo@gmail.com
+                                                    </p>
+                                                </div>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <div class="d-flex">
+                                                    <button class="different-btn btn w-50 me-2 " data-bs-toggle="modal"
+                                                        data-bs-target="#ownerSeeMore"
+                                                        type="button">Ver mais</button>
+                                                    <button class="btn btn-danger text-white w-50" data-bs-toggle="modal"
+                                                        data-bs-target="#reportModal"
+                                                        type="button">Denunciar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($i == 2)
+                                        <div class="card special-card d-none d-md-block  d-lg-block" style="width: 14rem;">
+                                            <img src="../img/photo-round.png" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <div>
+                                                    <h6 class="card-title color-darkest-orange text-uppercase">
+                                                        Aceltino Kiaku Mateus Quianvo
+                                                    </h6>
+                                                    <p class="color-darkest-orange">
+                                                        cesaltinoquianvo@gmail.com
+                                                    </p>
+                                                </div>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <div class="d-flex">
+                                                    <button class="different-btn btn w-50 me-2 " data-bs-toggle="modal"
+                                                        data-bs-target="#ownerSeeMore"
+                                                        type="button">Ver mais</button>
+                                                    <button class="btn btn-danger text-white w-50" data-bs-toggle="modal"
+                                                        data-bs-target="#reportModal"
+                                                        type="button">Denunciar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($i > 2)
+                                        <div class="card special-card d-none d-lg-block" style="width: 14rem;">
+                                            <img src="../img/photo-round.png" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <div>
+                                                    <h6 class="card-title color-darkest-orange text-uppercase">
+                                                        Aceltino Kiaku Mateus Quianvo
+                                                    </h6>
+                                                    <p class="color-darkest-orange">
+                                                        cesaltinoquianvo@gmail.com
+                                                    </p>
+                                                </div>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <h6 class="card-text mb-2">
+                                                    +244 944 920 439
+                                                </h6>
+                                                <div class="d-flex">
+                                                    <button class="different-btn btn w-50 me-2 " data-bs-toggle="modal"
+                                                        data-bs-target="#ownerSeeMore"
+                                                        type="button">Ver mais</button>
+                                                    <button class="btn btn-danger text-white w-50" data-bs-toggle="modal"
+                                                        data-bs-target="#reportModal"
+                                                        type="button">Denunciar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endfor
+                                <!--    *End of card-1    -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--    *End of carousel-3  -->
+            </div>
+        </section>
+        <!--    *End of Owner section    --> 
+    </section> 
     <!--    *End of section between the carousels    -->
+    
+    <div class="d-flex justify-content-center mb-4">
+        <hr class="w-50 mb-4">
+    </div>
 
     <!--    *Main section start   -->
     <section class="bg-other-cream-color container-fluid mt-3 px-5 py-3">
@@ -168,6 +281,283 @@
         </div>
     </div>
     <!--    *End of carousel-2  -->
+
+    <!-- Modal-1 -->
+    <div class="modal fade" id="ownerSeeMore" tabindex="-1" aria-labelledby="ownerSeeMore"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="d-flex modal-header justify-content-between">
+                    <h2>Status</h2>
+                    <h2>Proprietário / Cliente</h2>
+                </div>
+                <div class="modal-body">
+                    <section class="container-fluid">
+                        <div class="py-3 row">
+                            <div class="col-12 col-lg-5">
+                                <div class="align-items-center d-flex h-100 justify-content-center">
+                                    <img class="rounded-5 w-25" alt="photo"
+                                        src={{ $propriedadeOne['propr_img'] ?? '../img/photo-round.png' }}>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7 mt-3 mt-lg-0">
+                                <div class="bl-2 ps-2">
+                                    <strong class="text-uppercase">ACELTINO KIAKU MATEUS QUIANVO</strong>
+                                    <p>+244 956 234 112</p>
+                                    <p>+244 956 234 112</p>
+                                    <p>cesaltinoquianvo@gmail.com</p>
+                                    <p class="mb-0">Solicitações bem sucedidas</p>
+                                    <button class="btn btn-danger text-white w-50" data-bs-toggle="modal" data-bs-target="#reportModal" type="button">Denunciar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="py-3 row">
+                            <div class="col-12 col-lg-5">
+                                <div class="align-items-center d-flex h-100 justify-content-center">
+                                    <h4 class="text-uppercase">Dados bancários</h4>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7 mt-3 mt-lg-0">
+                                <div class="bl-2">
+                                    <div class="mb-4 ps-2">
+                                        <strong class="text-uppercase">BAI</strong>
+                                        <p class="mb-1">AO06.8793.8364.1334.3231.7</p>
+                                        <p class="mb-1">8793.8364.1334.3231.7</p>
+                                        <p>ACELTINO KIAKU MATEUS QUIANVO</p>
+                                    </div>
+                                    <div class="ps-2">
+                                        <strong class="text-uppercase">Banco Sol</strong>
+                                        <p class="mb-1">AO06.8793.8364.1334.3231.7</p>
+                                        <p class="mb-1">8793.8364.1334.3231.7</p>
+                                        <p>ACELTINO KIAKU MATEUS QUIANVO</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-secondary px-3 w-100" data-bs-dismiss="modal">
+                                Voltar
+                            </button>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex modal-footer justify-content-center">
+                    <section class="d-flex gap-3">
+                        <button type="button" class="btn btn-warning px-3 text-white" data-bs-dismiss="modal">
+                            Editar (ADM / OWN)
+                        </button>
+                        <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
+                            data-bs-target="#confirmationModal">
+                            Ver propriedades
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End of modal-1   -->
+
+    <!-- Modal-2 -->
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="d-flex modal-header justify-content-center">
+                    <span class="fs-4 text-uppercase">
+                        <strong>Denunciar:</strong>
+                        ACELTINO KIAKU MATEUS QUIANVO
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <section class="container-fluid">
+                        <div class="py-3 row">
+                            <div>
+                                <div class="px-2">
+                                    <p>Escreva abaixo o motivo da denuncia.</p>
+                                    <textarea class="form-control w-100" name="" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex modal-footer justify-content-center">
+                    <section class="d-flex gap-3">
+                        <button type="button" class="btn btn-warning px-3 text-white" data-bs-dismiss="modal">
+                            Voltar
+                        </button>
+                        <button class="btn btn-danger text-white w-50" data-bs-toggle="modal" data-bs-target="#reportModal" type="button">Denunciar</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End of modal-2   -->
+
+    <!-- Modal-3 -->
+    <div class="modal fade" id="homeRegistrationModal" tabindex="-1" aria-labelledby="homeRegistrationModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="d-flex modal-header justify-content-center">
+                    <span class="darkest-brown fw-bold fs-4 text-uppercase">
+                        Registrar casa
+                    </span>
+                </div>
+                <div class="modal-body">
+                    <section class="container-fluid">
+                        <div class="py-3 row">
+                            <div>
+                                <form class="bg-form-orange py-3 px-4 rounded-3">
+                                    <h3 class="text-center">Informações gerais</h3>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6">
+                                                <div>
+                                                    <span class="form-text">Tipo de propriedade</span>
+                                                    <input class="form-control" type="text" name="propertyType" id="propertyType">
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <span class="form-text">Localização</span>
+                                                        <div class="d-flex gap-2 justify-content-between">
+                                                            <select class="form-select" name="" id="province">
+                                                                <optgroup label="Províncias">
+                                                                    <option value="Luanda">Luanda</option>
+                                                                    <option value="Benguela">Benguela</option>
+                                                                    <option value="Cabinda">Cabinda</option>
+                                                                </optgroup>
+                                                            </select>
+                                                            <select class="form-select" name="" id="municipe">
+                                                                <optgroup label="Municípios">
+                                                                    <option value="Ingombota">Ingombota</option>
+                                                                    <option value="Viana">Viana</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <span class="form-text">Estado da propriedade</span>
+                                                        <div>
+                                                            <select class="form-select" name="" id="propertyState">
+                                                                <optgroup label="Estado">
+                                                                    <option value="0">Disponível</option>
+                                                                    <option value="1">Ocupado</option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <div>
+                                                    <span class="form-text">Documento(s) da propriedade(pdf/img)</span>
+                                                    <input class="form-control" type="file" name="propertyDoc" id="propertyDoc">
+                                                </div>
+                                                <div>
+                                                    <span class="form-text">Bairro ou rua onde está a casa</span>
+                                                    <input class="form-control" type="text" name="street">
+                                                </div>
+                                                <div>
+                                                    <span class="form-text">Número de quartos</span>
+                                                    <select class="form-select" name="" id="numberOfRooms">
+                                                        <optgroup label="Número de quartos">
+                                                            @for ($i = 1; $i <= 6; $i++)
+                                                                <option value="{{$i}}">{{$i}}</option>
+                                                            @endfor
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-lg-6">
+                                                <span class="form-text">Descrições da casa (2 salas, 1 WC)</span>
+                                                <input class="form-control mb-2" type="text" name="description1">
+                                                <input class="form-control" type="text" name="description2">
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <span class="form-text">Deblidades da casa (Sem energia)</span>
+                                                <input class="form-control mb-2" type="text" name="de1">
+                                                <input class="form-control" type="text" name="de2">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-lg-6">
+                                                <span class="form-text">Imagem principal da propriedade (capa)</span>
+                                                <input class="form-control mb-2" type="file" name="mainImage">
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <span class="form-text">Outras imagens da casa</span>
+                                                <input class="form-control mb-2" type="file" name="otherImages">
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="form-text">Fale um pouco mais sobre a casa (opcional)</span>
+                                                <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <h3 class="text-center my-3">Informações do preçário</h3>
+                                            <div class="row">
+                                                <span class="form-text">Duração</span>
+                                                <div class="d-flex justify-content-center gap-3">
+                                                    <select class="form-select" name="" id="number">
+                                                        <optgroup label="Valor">
+                                                            @for ($i = 1; $i <= 10; $i++)
+                                                                <option value="{{$i}}">{{$i}}</option>
+                                                            @endfor
+                                                        </optgroup>
+                                                    </select>
+                                                    <select class="form-select" name="" id="unity">
+                                                        <optgroup label="Unidade de medida">
+                                                            <option value="Dias">Dias</option>
+                                                            <option value="Meses">Meses</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6">
+                                                    <span class="form-text">O que pretende com a sua casa?</span>
+                                                    <select class="form-select" name="" id="opcao">
+                                                        <optgroup label="Opção">
+                                                            <option value="Alugar">Alugar</option>
+                                                            <option value="Vender">Vender</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <span class="form-text">Preço (em kwanzas)</span>
+                                                    <input class="form-control mb-2" type="text" name="price">
+                                                </div>
+                                            </div>
+                                            <div class="form-check my-3">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label text-white" for="flexCheckDefault">
+                                                    Li e concordo com os vossos termos e privacidade
+                                                </label>
+                                            </div>
+                                    </section>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex modal-footer justify-content-center">
+                    <section class="d-flex gap-3">
+                        <button class="btn btn-danger text-white" data-bs-dismiss="modal" type="button">
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-warning px-3 text-white">
+                            Cadastrar propriedade
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End of modal-3   -->
 </main>
 <!--    *End of main    -->
 </div>
