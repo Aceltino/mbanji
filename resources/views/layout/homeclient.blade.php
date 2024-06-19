@@ -10,6 +10,8 @@
 
     <!-- /	Link dos Css do Bootstrap -->
     <link href={{URL::asset("bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link href={{{URL::asset("font-awesome/css/font-awesome.min.css")}}} rel="stylesheet">
+
 
     <!-- /	Link do Css do projecto -->
     <link href={{{URL::asset("css/config.css")}}} rel="stylesheet">
@@ -48,7 +50,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">eleciona "Sair" se deseja terminar a sessão</div>
+                <div class="modal-body">Seleciona "Sair" se deseja terminar a sessão</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="{{ route('logout') }}">Sair</a>
@@ -62,17 +64,17 @@
     <!--    *Nav start  -->
     <nav class="navbar navbar-expand-lg bg-white px-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="{{ route('client') }}">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">Alugar/Comprar casa</a>
+                <a class="nav-link " aria-current="page" href="{{ route('buyrent.client') }}">Alugar/Comprar casa</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Minhas propriedades</a>
+                <a class="nav-link" href="{{ route('seeProperties') }}">Minhas propriedades</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Solicitações</a>

@@ -3,6 +3,7 @@
 use App\Http\Livewire\About;
 use App\Http\Livewire\AddBankDetails;
 use App\Http\Livewire\BuyRent;
+use App\Http\Livewire\BuyRentClient;
 use App\Http\Livewire\HomeAdmin;
 use App\Http\Livewire\HomeClient;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +41,9 @@ Route::get('/ver-mais', SeeMore::class)->name('see.more');
 Route::get('/logout', [HomeClient::class, 'logout'])->name('logout');
 
 Route::get('/termo', TermosCondições::class)->name('aaa');
-Route::get('/see-properties', SeeProperties::class)->name('seeProperties');
+Route::get('/ver-propriedades', SeeProperties::class)->name('seeProperties');
+Route::get('/comprar-vender-propriedade', BuyRentClient::class)->name('buyrent.client');
+
 
 
 

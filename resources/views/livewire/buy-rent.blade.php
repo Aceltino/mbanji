@@ -36,6 +36,23 @@
     .bg-darkest-orange:active {
         background-color: rgba(216, 120, 18, 0.667); /* Substitua 'sua-cor' pela cor desejada */
     }
+    .image-carousel {
+    object-fit: contain;
+    height: 400px; /* Defina a altura desejada para todas as imagens no carousel */
+}
+
+.carousel-control-prev,
+    .carousel-control-next {
+        /* Outros estilos... */
+        background-color: rgba(153, 142, 142, 0.5); /* Cor de fundo dos botões (branco com 50% de opacidade) */
+    }
+
+    /* Estilo para os botões de navegação quando hover (opcional) */
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        /* Outros estilos... */
+        background-color: rgba(255, 255, 255, 0.7); /* Cor de fundo dos botões ao passar o mouse (branco com 70% de opacidade) */
+    }
     </style>
 
     <main>
@@ -60,94 +77,53 @@
         <section class="container-fluid me-3 ms-2 mt-1 py-4">
             <div class="px-2 row w-100">
                 <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="tipo"
-                        id="tipo" wire:model="tipo">>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Tipo de
-                            casa
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Apartamento
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=0>Vivenda
-                        </option>
+                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="tipo" id="tipo" wire:model="tipo">>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Tipo de casa</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Apartamento</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=0>Vivenda</option>
                     </select>
                 </div>
 
                 <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="provincia"
-                        id="provincia" wire:model="provincia">
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Província
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Luanda
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Benguela
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Uige
-                        </option>
+                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="provincia" id="provincia" wire:model="provincia">
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Província</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Luanda</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Benguela</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Uige</option>
                     </select>
                 </div>
 
                 <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="municipio"
-                        id="municipio" wire:model="municipio">
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Município
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Viana
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Casenga
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Kilamba kiaxi
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=4>Benguela1
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=5>Benguela2
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=6>Uige1
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=7>Uige2
-                        </option>
+                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="municipio" id="municipio" wire:model="municipio">
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Município</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Viana</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Casenga</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Kilamba kiaxi</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=4>Benguela1</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=5>Benguela2</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=6>Uige1</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=7>Uige2</option>
                     </select>
                 </div>
 
                 <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="preco"
-                        id="preco" wire:model="preco">
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Preçário
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2000>2.000,00
-                            Kzs</option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3000>3.000,00
-                            Kzs</option>
+                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="preco" id="preco" wire:model="preco">
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Preçário</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2000>2.000,00 Kzs</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3000>3.000,00 Kzs</option>
                     </select>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center px-2 py-0 py-md-3 row w-100">
                 <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="quarto"
-                        id="quarto" wire:model="quarto">
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Nº de
-                            quartos</option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>2</option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=5>5</option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=9>9</option>
-                    </select>
-                </div>
-
-                <div class="col-md-3 d-flex justify-content-center mb-2 mb-md-0">
-                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="tempo"
-                        id="tempo" wire:model="tempo">
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Quanto
-                            tempo?</option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=5>Hora
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Diário
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Semanal
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Mensal
-                        </option>
-                        <option class="bg-transparent-orange color-darkest-orange text-center" value=4>Anual
-                        </option>
+                    <select class="bg-darkest-orange border-0 form-select text-center text-white" name="tempo" id="tempo" wire:model="tempo">
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value="">Quanto tempo?</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=5>Hora</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=1>Diário</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=2>Semanal</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=3>Mensal</option>
+                        <option class="bg-transparent-orange color-darkest-orange text-center" value=4>Anual</option>
                     </select>
                 </div>
 
@@ -156,9 +132,9 @@
                         <i class="fa fa-search" aria-hidden="true"></i> Buscar
                     </button>
                 </div>
-
             </div>
         </section>
+
 
         <!--    *End of search section   -->
 
@@ -185,10 +161,13 @@
                                 @foreach ($row as $propriedade)
                                     <div class="card d-none d-sm-block p-0 special-card" style="width: 14rem;">
                                         @if (array_key_exists('imgProperty', $propriedade))
-                                            <img src="{{ $propriedade['imgProperty'] }}" class="card-img-top"
-                                                alt="...">
+                                            <div style="height: 200px; overflow: hidden;">
+                                                <img src="{{ $propriedade['imgProperty'] }}" class="card-img-top img-fluid" alt="Imagem do Imóvel">
+                                            </div>
                                         @else
-                                            <img src="imagem_padrao.jpg" class="card-img-top" alt="...">
+                                            <div style="height: 200px; overflow: hidden;">
+                                                <img src="imagem_padrao.jpg" class="card-img-top img-fluid" alt="Imagem do Imóvel">
+                                            </div>
                                         @endif
                                         <div class="card-body">
                                             <div>
@@ -196,11 +175,13 @@
                                                     {{ $propriedade['lowestPrice'] ?? 'Carregando preço...' }}
                                                 </h6>
                                                 <p class="color-darkest-orange">
-                                                    {{ $propriedade['province'] ?? 'Província desconhecida' }}</p>
+                                                    {{ $propriedade['province'] ?? 'Província desconhecida' }}
+                                                </p>
                                             </div>
                                             <h6 class="card-text mb-4">
                                                 {{ $propriedade['municipio'] ?? 'Município desconhecido' }},
-                                                {{ $propriedade['location'] ?? 'Localização desconhecida' }}</h6>
+                                                {{ $propriedade['location'] ?? 'Localização desconhecida' }}
+                                            </h6>
                                             <button class="a-main-like-btn-bg btn text-white w-100"
                                                 data-bs-toggle="modal" data-bs-target="#seeMoreModal"
                                                 wire:click.prevent="pegarPropriedade({{ $propriedade['propertyID'] ?? '' }})"
@@ -211,6 +192,7 @@
                             </div>
                         @endforeach
                     </div>
+
                     @else
                         <div class="notification" id="notification" style="display: none;">
                             <span style="margin-left: 10px;">Sem resultado para esta filtragem!</span>
@@ -282,6 +264,7 @@
                         <div wire:loading.remove>
 
                             <section class="container-fluid">
+
                                 <div class="row">
                                     <div class="col-12">
                                         <!-- Carousel principal -->
@@ -289,33 +272,32 @@
                                             <div class="carousel-inner">
                                                 <!-- Imagens principais -->
                                                 <div class="carousel-item active">
-                                                    <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}"
-                                                        class="d-block w-100" alt="Imagem principal">
+                                                    <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}" class="d-block w-100 image-carousel"
+                                                        alt="Imagem principal">
                                                 </div>
                                                 <!-- Imagens adicionais -->
-                                                @if (isset($propriedadeOne['images']) && $propriedadeOne['images'] !== [])
+                                                @if(isset($propriedadeOne['images']) && $propriedadeOne['images'] !== [])
                                                     @foreach ($propriedadeOne['images'] as $index => $image)
                                                         <div class="carousel-item">
-                                                            <img src="{{ $image['img'] }}" class="d-block w-100"
+                                                            <img src="{{ $image['img'] }}" class="d-block w-100 image-carousel"
                                                                 alt="Imagem adicional {{ $image['imgId'] }}">
                                                         </div>
                                                     @endforeach
                                                 @endif
                                             </div>
                                             <!-- Botões de navegação -->
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselPrincipal" data-bs-slide="prev">
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselPrincipal" data-bs-slide="next">
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- Restante do conteúdo da modal -->
                                 <!-- ... -->
                             </section>
@@ -327,9 +309,11 @@
                                         <i class="bi bi-house-fill"></i>
                                         <span>
                                             @if (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 1)
-                                                Apartamento
+                                            Apartamento
+                                            @elseif (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 0)
+                                            Vivenda
                                             @else
-                                                Vivenda
+                                            Tipo de casa: N/D
                                             @endif
                                         </span>
                                     </div>
@@ -397,113 +381,82 @@
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="darkest-brown">Descrição da casa</h3>
+                                        <h3 class="darkest-brown">Agua</h3>
                                     </div>
                                 </div>
-
-                                @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                                    @php $hasDescription1 = false; @endphp
-                                    @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                        <div class="row">
-                                            @foreach ($chunk as $index => $descricao)
-                                                @if ($index % 4 == 0)
-                                        </div>
-                                        <div class="row">
-                                    @endif
-                                    @if ($descricao['descType'] == 1)
-                                        @php $hasDescription1 = true; @endphp
-                                        <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-12">
                                             <ul class="list-group text-center w-100">
-                                                <li class="list-group-item">{{ $descricao['desc'] }}</li>
+                                                @if (isset($propriedadeOne['agua']))
+
+                                                @if($propriedadeOne['agua'] == 0 )
+                                                <li class="list-group-item">Casa sem canalização (Sem água corrente)</li>
+                                                @else
+                                                <li class="list-group-item">Casa canalizada (Com água corrente)</li>
+                                                @endif
+                                                @endif
+
                                             </ul>
                                         </div>
-                                    @endif
-                                @endforeach
-                        </div>
-                        @endforeach
-                        @if (!$hasDescription1)
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3 class="darkest-brown">Energia</h3>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <ul class="list-group text-center w-100">
+                                                    @if (isset($propriedadeOne['energia']))
+
+                                                    @if($propriedadeOne['energia'] == 0 )
+                                                    <li class="list-group-item">Casa sem energia da rede!</li>
+                                                    @else
+                                                    <li class="list-group-item">Casa com energia da rede!</li>
+                                                    @endif
+                                                    @endif
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h3 class="darkest-brown">Localidade</h3>
+                                            </div>
+                                        </div>
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <ul class="list-group text-center w-100">
+                                                        @if (isset($propriedadeOne['estrada']))
+
+                                                        @if($propriedadeOne['estrada'] == 0 )
+                                                        <li class="list-group-item">Casa ao pé da estrada principal!</li>
+                                                        @else
+                                                        <li class="list-group-item">Casa não muito próxima da estrada!</li>
+                                                        @endif
+                                                        @endif
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                             <div class="row">
                                 <div class="col-12">
-                                    <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">Sem descrições descritas</li>
-                                    </ul>
+                                    <h3 class="darkest-brown">Compartimento e outros detalhes da casa</h3>
                                 </div>
                             </div>
-                        @endif
-                    @else
-                        <div class="row">
-                            <div class="col-12">
-                                <ul class="list-group text-center w-100">
-                                    <li class="list-group-item">Sem descrições descritas</li>
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="darkest-brown">Debilidades da casa</h3>
-                            </div>
-                        </div>
-
-                        @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                            @php $hasDescription0 = false; @endphp
-                            @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                <div class="row">
-                                    @foreach ($chunk as $index => $descricao)
-                                        @if ($index % 4 == 0)
+                            <div class="py-3 row">
+                                <div class="align-items-center col-12 col-lg-6 d-flex flex-column w-100">
+                                    <div>
+                                        <p>
+                                               {{ $propriedadeOne['property_description'] ??  'Sem descrição!'}}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="row">
-                            @endif
-                            @if ($descricao['descType'] == 0)
-                                @php $hasDescription0 = true; @endphp
-                                <div class="col-3">
-                                    <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">{{ $descricao['desc'] }}</li>
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    @endforeach
-                    @if (!$hasDescription0)
-                        <div class="row">
-                            <div class="col-12">
-                                <ul class="list-group text-center w-100">
-                                    <li class="list-group-item">Sem debilidades descritas</li>
-                                </ul>
                             </div>
-                        </div>
-                    @endif
-                @else
-                    <div class="row">
-                        <div class="col-12">
-                            <ul class="list-group text-center w-100">
-                                <li class="list-group-item">Sem debilidades descritas</li>
-                            </ul>
-                        </div>
-                    </div>
-                    @endif
-
-                    <div class="row">
-                        <div class="col-12">
-                            <h3 class="darkest-brown">Um pouco mais sobre a casa...</h3>
-                        </div>
-                    </div>
-                    <div class="py-3 row">
-                        <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
-                            <div>
-                                <p>
-                                    @if (isset($propriedadeOne['property_description']) && $propriedadeOne['property_description'] == 0)
-                                        Sem descrição adicional!
-                                    @else
-                                        {{ $propriedadeOne['property_description'] ?? 'Sem descrição adicional!' }}
-                                    @endif
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    </section>
+                        </section>
                     <section class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-lg-5">
@@ -541,8 +494,10 @@
                     <section class="d-flex gap-3">
                         <button type="button" class="btn btn-warning px-5 text-white"
                             data-bs-dismiss="modal">Voltar</button>
-                        <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
-                            data-bs-target="#confirmationModal">Solicitar casa</button>
+                        {{-- <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
+                            data-bs-target="#confirmationModal">Solicitar casa</button> --}}
+                            <a href="{{route('login.user')}}" class="a-main-like-btn-bg btn text-white px-4">Solicitar casa</a>
+
                     </section>
                 </div>
             </div>
@@ -552,7 +507,7 @@
 <!--    End of modal-1    -->
 
 <!-- Modal-2 -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+{{-- <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -636,7 +591,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!--    End of modal-2   -->
 </main>
 </div>

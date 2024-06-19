@@ -31,13 +31,14 @@ class BuyRent extends Component
 
     public function loadMore($param = null)
     {
+        $this->page++;
+
         $response = Http::post('http://u_mbanji.test/api/show-all-property', [
             'page' => $this->page,
         ]);
         $this->in = 0;
 
         $properties = $response->json();
-        $this->page++;
 
         if (!empty($properties['properties'])) {
             $this->propriedades['properties'] = array_merge($this->propriedades['properties'], $properties['properties']);
@@ -106,7 +107,7 @@ class BuyRent extends Component
     }
     public function render()
     {
-        return view('livewire.buy-rent')->layout('layout.buy-rent');;
+        return view('livewire.buy-rent')->layout('layout.buy-rent');
     }
 
     public function pegarPropriedade($propriedade)

@@ -15,6 +15,11 @@
         background-color: rgba(255, 255, 255, 0.7); /* Cor de fundo dos botões ao passar o mouse (branco com 70% de opacidade) */
     }
 
+    .image-carousel {
+    object-fit: contain;
+    height: 400px; /* Defina a altura desejada para todas as imagens no carousel */
+}
+
 
 </style>
 
@@ -157,14 +162,14 @@
             <div id="cards-section">
                 <!--    *Carousel-3 start   -->
                 <div id="carouselExampleHouses" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Adicione o atributo data-bs-ride="carousel" -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="cards-wrapper">
-                                <!--    *Card-1 start    -->
                                 @foreach ($propriedades as $propriedade)
                                     <div class="card special-card" style="width: 14rem;">
-                                        <img src="{{ $propriedade['imgProperty'] }}" class="card-img-top" alt="...">
+                                        <div style="height: 200px; overflow: hidden;">
+                                            <img src="{{ $propriedade['imgProperty'] }}" class="card-img-top" alt="..." style="object-fit: cover; width: 100%;">
+                                        </div>
                                         <div class="card-body">
                                             <div>
                                                 <h6 class="card-title color-darkest-orange">
@@ -178,14 +183,14 @@
                                                 wire:click.prevent="pegarPropriedade({{ $propriedade['propertyID'] }})"
                                                 type="button">Ver mais</button>
                                         </div>
-
                                     </div>
                                 @endforeach
-                                <!--    *End of card-1    -->
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <!--    *End of carousel-3  -->
             </div>
 
@@ -275,6 +280,7 @@
                     <div wire:loading.remove>
 
                     <section class="container-fluid">
+
                         <div class="row">
                             <div class="col-12">
                                 <!-- Carousel principal -->
@@ -282,14 +288,14 @@
                                     <div class="carousel-inner">
                                         <!-- Imagens principais -->
                                         <div class="carousel-item active">
-                                            <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}" class="d-block w-100"
+                                            <img src="{{ $propriedadeOne['property_img'] ?? '../img/buildings.png' }}" class="d-block w-100 image-carousel"
                                                 alt="Imagem principal">
                                         </div>
                                         <!-- Imagens adicionais -->
                                         @if(isset($propriedadeOne['images']) && $propriedadeOne['images'] !== [])
                                             @foreach ($propriedadeOne['images'] as $index => $image)
                                                 <div class="carousel-item">
-                                                    <img src="{{ $image['img'] }}" class="d-block w-100"
+                                                    <img src="{{ $image['img'] }}" class="d-block w-100 image-carousel"
                                                         alt="Imagem adicional {{ $image['imgId'] }}">
                                                 </div>
                                             @endforeach
@@ -307,8 +313,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Restante do conteúdo da modal -->
-                        <!-- ... -->
                     </section>
 
 
@@ -318,9 +322,11 @@
                                 <i class="bi bi-house-fill"></i>
                                 <span>
                                     @if (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 1)
-                                        Apartamento
+                                    Apartamento
+                                    @elseif (isset($propriedadeOne['property_type']) && $propriedadeOne['property_type'] == 0)
+                                    Vivenda
                                     @else
-                                        Vivenda
+                                    Tipo de casa: N/D
                                     @endif
                                 </span>
                             </div>
@@ -387,106 +393,77 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <h3 class="darkest-brown">Descrição da casa</h3>
+                                <h3 class="darkest-brown">Agua</h3>
                             </div>
                         </div>
-
-                        @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                            @php $hasDescription1 = false; @endphp
-                            @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                <div class="row">
-                                    @foreach ($chunk as $index => $descricao)
-                                        @if ($index % 4 == 0)
-                                            </div><div class="row">
-                                        @endif
-                                        @if ($descricao['descType'] == 1)
-                                            @php $hasDescription1 = true; @endphp
-                                            <div class="col-3">
-                                                <ul class="list-group text-center w-100">
-                                                    <li class="list-group-item">{{ $descricao['desc'] }}</li>
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            @endforeach
-                            @if (!$hasDescription1)
-                                <div class="row">
-                                    <div class="col-12">
-                                        <ul class="list-group text-center w-100">
-                                            <li class="list-group-item">Sem descrições descritas</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            @endif
-                        @else
                             <div class="row">
                                 <div class="col-12">
                                     <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">Sem descrições descritas</li>
+                                        @if (isset($propriedadeOne['agua']))
+
+                                        @if($propriedadeOne['agua'] == 0 )
+                                        <li class="list-group-item">Casa sem canalização (Sem água corrente)</li>
+                                        @else
+                                        <li class="list-group-item">Casa canalizada (Com água corrente)</li>
+                                        @endif
+                                        @endif
+
                                     </ul>
                                 </div>
                             </div>
-                        @endif
 
-                        <div class="row">
-                            <div class="col-12">
-                                <h3 class="darkest-brown">Debilidades da casa</h3>
-                            </div>
-                        </div>
-
-                        @if (isset($propriedadeOne['descriptions']) && count($propriedadeOne['descriptions']) > 0)
-                            @php $hasDescription0 = false; @endphp
-                            @foreach (array_chunk($propriedadeOne['descriptions'], 4) as $chunk)
-                                <div class="row">
-                                    @foreach ($chunk as $index => $descricao)
-                                        @if ($index % 4 == 0)
-                                            </div><div class="row">
-                                        @endif
-                                        @if ($descricao['descType'] == 0)
-                                            @php $hasDescription0 = true; @endphp
-                                            <div class="col-3">
-                                                <ul class="list-group text-center w-100">
-                                                    <li class="list-group-item">{{ $descricao['desc'] }}</li>
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="darkest-brown">Energia</h3>
                                 </div>
-                            @endforeach
-                            @if (!$hasDescription0)
+                            </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <ul class="list-group text-center w-100">
-                                            <li class="list-group-item">Sem debilidades descritas</li>
+                                            @if (isset($propriedadeOne['energia']))
+
+                                            @if($propriedadeOne['energia'] == 0 )
+                                            <li class="list-group-item">Casa sem energia da rede!</li>
+                                            @else
+                                            <li class="list-group-item">Casa com energia da rede!</li>
+                                            @endif
+                                            @endif
+
                                         </ul>
                                     </div>
                                 </div>
-                            @endif
-                        @else
-                            <div class="row">
-                                <div class="col-12">
-                                    <ul class="list-group text-center w-100">
-                                        <li class="list-group-item">Sem debilidades descritas</li>
-                                    </ul>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="darkest-brown">Localidade</h3>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <ul class="list-group text-center w-100">
+                                                @if (isset($propriedadeOne['estrada']))
+
+                                                @if($propriedadeOne['estrada'] == 0 )
+                                                <li class="list-group-item">Casa ao pé da estrada principal!</li>
+                                                @else
+                                                <li class="list-group-item">Casa não muito próxima da estrada!</li>
+                                                @endif
+                                                @endif
+
+                                            </ul>
+                                        </div>
+                                    </div>
 
                     <div class="row">
                         <div class="col-12">
-                            <h3 class="darkest-brown">Um pouco mais sobre a casa...</h3>
+                            <h3 class="darkest-brown">Compartimento e outros detalhes da casa</h3>
                         </div>
                     </div>
                     <div class="py-3 row">
-                        <div class="align-items-center col-12 col-lg-6 d-flex flex-column mb-2 w-100">
+                        <div class="align-items-center col-12 col-lg-6 d-flex flex-column w-100">
                             <div>
                                 <p>
-                                    @if ( isset($propriedadeOne['property_description']) && $propriedadeOne['property_description'] == 0)
-                                    Sem descrição adicional!
-                                    @else
-                                       {{ $propriedadeOne['property_description'] ??  'Sem descrição adicional!'}}
-                                    @endif
+                                       {{ $propriedadeOne['property_description'] ??  'Sem descrição!'}}
                                 </p>
                             </div>
                         </div>
@@ -527,8 +504,10 @@
                 <section class="d-flex gap-3">
                     <button type="button" class="btn btn-warning px-5 text-white"
                         data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
-                        data-bs-target="#confirmationModal">Solicitar casa</button>
+                    {{-- <button type="button" class="a-main-like-btn-bg btn text-white px-4" data-bs-toggle="modal"
+                        data-bs-target="#confirmationModal">Solicitar casa</button> --}}
+                        <a href="{{route('login.user')}}" class="a-main-like-btn-bg btn text-white px-4">Solicitar casa</a>
+
                 </section>
             </div>
             </div>
